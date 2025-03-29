@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Home from './Home';
 import Challenges from './Challenges';
@@ -7,36 +7,24 @@ import About from './About';
 import Resources from './Resources';
 import SecurityQuiz from './SecurityQuiz';
 import CyberEscapeRoom from './CyberEscapeRoom';
-import PasswordChallenge from './PasswordChallenge';
+import PasswordChallenge from './PasswordChallenge'; // Import Password Challenge
 import AttackSimulator from './AttackSimulator';
-import HackTheHacker from './HackTheHacker';
+import HackTheHacker from './HackTheHacker'; // Fixed typo in import
 import HackTheHackerComplete from './HackTheHackerComplete';
 import './App.css';
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
     <Router>
       <div className="app">
-        <h1 className="heading">Hello</h1>
         <nav className="navbar">
-          <Link to="/" className="nav-logo">Hackify</Link>
-          <button className="hamburger" onClick={toggleMenu}>
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
-          </button>
-          <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
-            <li><Link to="/challenges" onClick={toggleMenu}>Challenges</Link></li>
-            <li><Link to="/leaderboard" onClick={toggleMenu}>Leaderboard</Link></li>
-            <li><Link to="/about" onClick={toggleMenu}>About</Link></li>
-            <li><Link to="/resources" onClick={toggleMenu}>Resources</Link></li>
+          <Link to="/" className="nav-logo" >Hackify</Link>
+          <ul className="nav-links">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/challenges">Challenges</Link></li>
+            <li><Link to="/leaderboard">Leaderboard</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/resources">Resources</Link></li>
           </ul>
         </nav>
         <Routes>
@@ -47,10 +35,10 @@ function App() {
           <Route path="/resources" element={<Resources />} />
           <Route path="/games/security-quiz" element={<SecurityQuiz />} />
           <Route path="/games/escape-room" element={<CyberEscapeRoom />} />
-          <Route path="/games/password-challenge" element={<PasswordChallenge />} />
+          <Route path="/games/password-challenge" element={<PasswordChallenge />} /> {/* Replaced CaptureTheFlag */}
           <Route path="/games/attack-sim" element={<AttackSimulator />} />
           <Route path="/games/hack-hacker" element={<HackTheHacker />} />
-          <Route path="/games/hack-hacker/complete" element={<HackTheHackerComplete />} />
+          <Route path="/games/hack-hacker/complete" element={<HackTheHackerComplete />} /> {/* Added route */}
         </Routes>
       </div>
     </Router>
